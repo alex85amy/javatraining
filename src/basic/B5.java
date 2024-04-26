@@ -3,7 +3,6 @@ package basic;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.SimpleTimeZone;
 
 public class B5 {
     public static void main(String[] args) throws ParseException {
@@ -12,9 +11,8 @@ public class B5 {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         System.out.println(simpleDateFormat.format(date));
 
-        String dateTimeStr = "2024-04-26 13:30:00";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
-        Date dateObj = dateFormat.parse(dateTimeStr);
+        String dateTimeStr = "2003-11-10 20:18:23";
+        Date dateObj = simpleDateFormat.parse(dateTimeStr);
         System.out.println(dateObj);
 
     }
