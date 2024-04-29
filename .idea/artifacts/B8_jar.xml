@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="B8:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/B8_jar</output-path>
+    <root id="archive" name="javatraining.jar">
+      <element id="module-output" name="javatraining" />
+    </root>
+  </artifact>
+</component>

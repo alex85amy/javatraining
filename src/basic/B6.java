@@ -8,12 +8,12 @@ public class B6 {
                 int result = num + 10;
                 String s = Integer.toString(result);
                 System.out.println("Input number: " + num);
-                System.out.println("Result after adding 10: " + result);
+                System.out.println("Input number + 10 : " + result);
             } catch (NumberFormatException e) {
-                System.err.println("Invalid input! Please enter a valid integer.");
+                System.err.println("輸入無效！ 請輸入有效的整數！");
             }
         } else {
-            System.err.println("Please provide an integer as command line argument.");
+            System.err.println("請提供一個整數作為命令列參數。");
         }
     }
 }

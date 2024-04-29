@@ -9,11 +9,11 @@ public class B5 {
         Date date = new Date();
         String format = "yyyy-MM-dd hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-        System.out.println(simpleDateFormat.format(date));
+        System.out.println("當下時間 : "+simpleDateFormat.format(date));
 
         String dateTimeStr = "2003-11-10 20:18:23";
         Date dateObj = simpleDateFormat.parse(dateTimeStr);
-        System.out.println(dateObj);
+        System.out.println("時間物件 : "+dateObj);
 
     }
 }
