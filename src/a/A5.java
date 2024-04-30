@@ -1,12 +1,46 @@
 package a;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
+
 public class A5 {
-//    1.請實做一個可以指定hash演算法
-//    (如：MD2、MD5、SHA-1、SHA-256、SHA-384、SHA-512…等)的程式
-//    (提示：MessageDigest)
-//    2.請將原程式設計成一個選擇性使用salt的hash程式簡單說明hash及加密的概念
-//1.	請説明程式執行步驟及處理過程
-//2.	請説明hash演算法破解方式及salt的用途
-//3.	解釋symmetric/asymmetric encryption的差異
+    public static String generateHashWithSalt(String input, String algorithm, String salt) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance(algorithm);
+            digest.reset();
+            digest.update(Base64.getDecoder().decode(salt));
+
+            byte[] hash = digest.digest(input.getBytes());
+
+            // Convert byte array to hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String generateSalt() {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        return Base64.getEncoder().encodeToString(salt);
+    }
+
+    public static void main(String[] args) {
+        String input = "HelloWorld";
+        String algorithm = "SHA-256";
+        String salt = generateSalt();
+        String hash = generateHashWithSalt(input, algorithm, salt);
+        System.out.println("Hash of '" + input + "' using " + algorithm + " algorithm with salt: " + hash);
+    }
 
 }
