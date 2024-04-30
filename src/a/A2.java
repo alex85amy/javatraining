@@ -1,13 +1,30 @@
 package a;
 
+import a.a2.Dog;
+import a.a2.Pet;
 
 public class A2 {
+    public static void main(String[] args) {
+        Pet myPet = new Pet("Buddy", "Brown", 5);
+        Dog myDog = new Dog("Max", "Black", 3);
 
-//    請自行設定情境以class及interface，表達出：
-//    A. private, default, protected, public之屬性及方法。
-//    B. extends, implements, override, overload
-//    請在程式中以註解方式說明以上兩項所列的所有關鍵字，例如：
-//    //This is an override example. It overrides method XXX.
-//    請自行想像一個情境 利用2個class跟1個interface將A跟B所提到的東西通通包含進去。
+        // 存取 Pet 類別的屬性
+        // private,default,protected屬性無法直接存取
+        // System.out.println(myPet.name); // Compile Error
+        // System.out.println(myPet.color); // Compile Error
+        // System.out.println(myPet.age); // Compile Error
+        System.out.println(myPet.isHungry); // Output: false
 
+        // 存取 Pet 類別的方法
+        myPet.makeSound(); // Output: This is a generic animal sound.
+        // private方法無法直接存取
+        // myPet.sleep(); // Compile Error
+        myPet.sleep(8); // Output: The pet sleeps for 8 hours.
+
+        // 存取 Dog 類別的方法
+        myDog.makeSound(); // Output: Woof! Woof!
+        // protected方法無法直接存取
+        // myDog.wagTail(); // Compile Error
+    }
 }
+

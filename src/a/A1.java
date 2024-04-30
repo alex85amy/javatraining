@@ -34,7 +34,7 @@ public class A1 {
     public static List<Map.Entry<String, Integer>> sortByValue(Map<String, Integer> map) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
         // 使用Comparator對Map.Entry進行排序，依照value降序排序
-        Collections.sort(list,new Comparator<Map.Entry<String, Integer>>() {
+        list.sort(new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
