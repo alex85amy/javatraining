@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL-->
+<configuration status="info" name="PropertiesConfig">
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n"/>
+        </Console>
+
+        <RollingFile name="SystemNotice" fileName="C:/logs/system_notice.log.log" filePattern="C:/logs/daily/system_notice.log.-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy代表根據時間做rollover modulate下次rollover在系統間隔上 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <!--保留指定份數的log，過舊的會被刪除。這裡設置保留5份 -->
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+        <RollingFile name="AnotherClass" fileName="C:/logs/another_class.log.log" filePattern="C:/logs/daily/another_class.log.-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy代表根據時間做rollover modulate下次rollover在系統間隔上 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <!--保留指定份數的log，過舊的會被刪除。這裡設置保留5份 -->
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+    </appenders>
+
+    <Loggers>
+
+        <Logger name="SystemNotice" level="DEBUG" additivity="false">
+            <AppenderRef ref="SystemNotice"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="AnotherClass" level="DEBUG" additivity="false">
+            <AppenderRef ref="AnotherClass"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</configuration>

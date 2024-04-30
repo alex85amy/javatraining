@@ -12,7 +12,7 @@ public class A2 {
         // private,default,protected屬性無法直接存取
         // System.out.println(myPet.name); // Compile Error
         // System.out.println(myPet.color); // Compile Error
-        // System.out.println(myPet.age); // Compile Error
+        // System.out.println(myPet.maxAge); // Compile Error
         System.out.println(myPet.isHungry); // Output: false
 
         // 存取 Pet 類別的方法
