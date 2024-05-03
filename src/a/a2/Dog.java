@@ -17,5 +17,6 @@ public class Dog extends Pet {
     protected void wagTail() {
         System.out.println("The dog is wagging its tail.");
     }
+
 }
 
