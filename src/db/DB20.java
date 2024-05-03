@@ -23,7 +23,7 @@ public class DB20 {
 
     public void addMember(String account, String password, String name, String email, String gender, String isBlock) throws SQLException {
         LocalDate currentDate = LocalDate.now();
-        LocalTime currentTime = LocalTime.now();
+        LocalTime currentTime = LocalTime.now().withNano(0);
         String isAd = "KM";
         String createDate = currentDate.toString();
         String createTime = currentTime.toString();
@@ -55,12 +55,12 @@ public class DB20 {
     }
 
 
-    public void searchMember(String keyword) throws SQLException {
+    public void searchMember(String search) throws SQLException {
         String sql = "SELECT * FROM eip_member WHERE m_account LIKE ? OR m_name LIKE ? OR m_email LIKE ?";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, "%" + keyword + "%");
-        preparedStatement.setString(2, "%" + keyword + "%");
-        preparedStatement.setString(3, "%" + keyword + "%");
+        preparedStatement.setString(1, "%" + search + "%");
+        preparedStatement.setString(2, "%" + search + "%");
+        preparedStatement.setString(3, "%" + search + "%");
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
@@ -70,6 +70,7 @@ public class DB20 {
             String email = resultSet.getString("m_email");
             String gender = resultSet.getString("m_gender");
             String isBlock = resultSet.getString("m_block");
+            String isAd = resultSet.getString("is_ad");
             String createDate = resultSet.getString("m_create_date");
             String createTime = resultSet.getString("m_create_time");
 
@@ -79,6 +80,7 @@ public class DB20 {
             System.out.println("Email: " + email);
             System.out.println("Gender: " + gender);
             System.out.println("Is Blocked: " + isBlock);
+            System.out.println("Is Ad: " + isAd);
             System.out.println("Create Date: " + createDate);
             System.out.println("Create Time: " + createTime);
             System.out.println();
