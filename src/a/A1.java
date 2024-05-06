@@ -13,7 +13,7 @@ public class A1 {
             int frequency = entry.getValue();
             // 將單字的首字母大寫，其他字母小寫
             String capitalizedWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-            System.out.println(capitalizedWord + ": " + frequency);
+            System.out.println(capitalizedWord + ": " + frequency + "次");
         }
     }
 

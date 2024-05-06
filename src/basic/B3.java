@@ -1,8 +1,6 @@
 package basic;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class B3 {
     public static void main(String[] args) {

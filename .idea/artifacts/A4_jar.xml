@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="A4:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/A4_jar</output-path>
+    <root id="archive" name="javatraining.jar">
+      <element id="module-output" name="javatraining" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-core-2.17.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mssql-jdbc-12.4.2.jre11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-api-2.17.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

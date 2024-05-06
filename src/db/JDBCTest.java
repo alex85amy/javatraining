@@ -2,6 +2,7 @@ package db;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -16,8 +17,9 @@ public class JDBCTest {
         String username = properties.getProperty("datasource.username");
         String password = properties.getProperty("datasource.password");
 
-        DriverManager.getConnection(url, username, password);
+        Connection connection = DriverManager.getConnection(url, username, password);
         System.out.println("sucess");
+        connection.close();
     }
 }
 

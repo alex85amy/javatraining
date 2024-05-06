@@ -7,7 +7,7 @@
             <PatternLayout pattern="[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n"/>
         </Console>
 
-        <RollingFile name="SystemNotice" fileName="C:/logs/system_notice.log.log" filePattern="C:/logs/daily/system_notice.log.-%d{yyyy-MM-dd}.log">
+        <RollingFile name="SystemNotice" fileName="C:/logs/system_notice.log.log" filePattern="C:/logs/daily/system_notice.log.%d{yyyy-MM-dd}.log">
             <PatternLayout>
                 <Pattern>[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n</Pattern>
             </PatternLayout>
@@ -19,7 +19,7 @@
             <DefaultRolloverStrategy max="5"/>
         </RollingFile>
 
-        <RollingFile name="AnotherClass" fileName="C:/logs/another_class.log.log" filePattern="C:/logs/daily/another_class.log.-%d{yyyy-MM-dd}.log">
+        <RollingFile name="AnotherClass" fileName="C:/logs/another_class.log.log" filePattern="C:/logs/daily/another_class.log.%d{yyyy-MM-dd}.log">
             <PatternLayout>
                 <Pattern>[%-5level] [%d{yyyy/MM/dd HH:mm:ss:SSS} %C-%M] : %m%n</Pattern>
             </PatternLayout>

@@ -16,7 +16,7 @@ public class Pet implements Animal {
         this.name = name;
         this.color = color;
         this.age = age;
-        this.isHungry = false; // 預設為飽食狀態
+        this.isHungry = false; // 預設為吃飽狀態
     }
 
     // makeSound() 方法的覆寫

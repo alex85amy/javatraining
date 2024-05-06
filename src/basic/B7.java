@@ -10,8 +10,9 @@ public class B7 {
         long milliseconds = calendar.getTimeInMillis();
         System.out.println("自Epoch經過的milliseconds : " + milliseconds);//從1970年1月1日0時0分0秒起至現在的總秒數
 
+        Calendar c1 = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        System.out.println(format.format(calendar.getTime()));
+        System.out.println(format.format(c1.getTime()));
 
         Calendar c2 = Calendar.getInstance();
         c2.add(Calendar.MONTH, -1);

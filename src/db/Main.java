@@ -8,8 +8,8 @@ public class Main {
         DB20 db20 = null;
         try {
             db20 = new DB20();
-//            db20.addMember("aaa", "bbb", "ccc", "ddd", "M", "N");
-//            db20.searchMember("ddd");
+            db20.addMember("aaa", "bbb", "ccc", "ddd", "M", "N");
+            db20.searchMember("ddd");
 //            db20.updateMember("aaa", "xxx", "vvv", "nnn", "F", "Y");
 //            db20.searchMember("aaa");
 //            db20.deleteMember("aaa");
