@@ -9,6 +9,7 @@ public class B6 {
                 String s = Integer.toString(result);
                 System.out.println("Input number: " + num);
                 System.out.println("Input number + 10 : " + result);
+                System.out.println(s);
             } catch (NumberFormatException e) {
                 System.err.println("輸入無效！ 請輸入有效的整數！");
             }

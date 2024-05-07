@@ -24,7 +24,11 @@ public class A2 {
         // 存取 Dog 類別的方法
         myDog.makeSound(); // Output: Woof! Woof!
         // protected方法無法直接存取
-        // myDog.wagTail(); // Compile Error
+        // myDog.wagTail(); // Compile
+
+        Pet dog = new Dog("柴犬", "赤色", 8);
+        dog.makeSound();
+
     }
 }
 

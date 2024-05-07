@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class A4 {
@@ -14,19 +15,23 @@ public class A4 {
         } else {
             InputStream inputStream = ClassLoader.getSystemResourceAsStream(args[0] + ".properties");
             Properties properties = new Properties();
-            properties.load(new InputStreamReader(inputStream, "utf-8"));
-            logger.info(properties);
+            if (inputStream != null) {
+                properties.load(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+                logger.info(properties);
 
-            File file = new File(args[1]);
-            file.createNewFile();
-            FileWriter writer = new FileWriter(file);
+                File file = new File(args[1]);
+                FileWriter writer = new FileWriter(file);
 
-            for (String key : properties.stringPropertyNames()) {
-                writer.write("[" + key + ", " + properties.getProperty(key) + "]\n");
+                for (String key : properties.stringPropertyNames()) {
+                    writer.write("[" + key + ", " + properties.getProperty(key) + "]\n");
+                }
+                writer.close();
             }
+            System.out.println("請輸入正確參數");
 
-            inputStream.close();
-            writer.close();
+            if (inputStream != null) {
+                inputStream.close();
+            }
         }
     }
 }

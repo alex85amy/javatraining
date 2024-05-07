@@ -18,5 +18,9 @@ public class Dog extends Pet {
         System.out.println("The dog is wagging its tail.");
     }
 
+    @Override
+    public Dog sleep(int hours) {
+        return this;
+    }
 }
 

@@ -26,13 +26,15 @@ public class Pet implements Animal {
     }
 
     // 這是一個private方法
-    private void sleep() {
+    private String sleep() {
         System.out.println("The pet is sleeping.");
+        return "";
     }
 
     // 過載的方法，與上面的方法名稱相同，但參數列表不同
-    public void sleep(int hours) {
+    public Pet sleep(int hours) {
         System.out.println("The pet sleeps for " + hours + " hours.");
+        return this;
     }
 }
 

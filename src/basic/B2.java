@@ -9,6 +9,9 @@ public class B2 {
         System.out.println(stringBuffer.length());
         stringBuffer.delete(0,stringBuffer.length());
         System.out.println("stringBuffer : "+stringBuffer);
+        String s1 = "select * from abc ";
+        String s2 = "where id=2";
+        System.out.println(s1+s2);
 
     }
 }
