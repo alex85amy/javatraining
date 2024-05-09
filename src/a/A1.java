@@ -1,41 +1,37 @@
 package a;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class A1 {
     public static Map<String, Integer> countWord(String text) {
-        Map<String, Integer> wordMap = new HashMap<>();
-        // 將字串分割成單字數組
-        String[] words = text.split("\\s+|,\\s*|\\.\\s*");
-        // 統計每個單字的出現次數
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                String lowercaseWord = word.toLowerCase();
-                wordMap.put(lowercaseWord, wordMap.getOrDefault(lowercaseWord, 0) + 1);
-            }
-        }
-        return wordMap;
+
+        return Arrays.stream(text.split("\\s+|,\\s*|\\.\\s*"))
+                .filter(word -> !word.isEmpty())
+                .map(String::toLowerCase)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(e -> 1)));// Collectors.counting()回傳Long
+
     }
 
-    public static List<Map.Entry<String, Integer>> sortByValue(Map<String, Integer> map) {
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-        // 使用Comparator對Map.Entry進行排序，依照value降序排序
-        list.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-        return list;
+    public static LinkedHashMap<String, Integer> sortByValue(Map<String, Integer> map) {
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
+        // 建立 LinkedHashMap 後，用 stream 比較 value 排序放入
+        map.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .forEachOrdered(entry -> sortedMap.put(entry.getKey(), entry.getValue()));
+        return sortedMap;
     }
 
     public static void main(String[] args) {
 
         String str = "This is a book. That is a pencil.This is good, and that is bad. ";
         Map<String, Integer> wordMap = countWord(str);
-        List<Map.Entry<String, Integer>> sortedWordList = sortByValue(wordMap);
+        LinkedHashMap<String, Integer> sortedWordList = sortByValue(wordMap);
 
-        for (Map.Entry<String, Integer> entry : sortedWordList) {
-            String word = entry.getKey();
-            int frequency = entry.getValue();
-            // 將單字的首字母大寫，其他字母小寫
+        sortedWordList.forEach((word, frequency) -> {
             String capitalizedWord = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-            System.out.println(capitalizedWord + ": " + frequency + "次");
-        }
+            System.out.println(capitalizedWord + ": " + frequency);
+        });
     }
 }

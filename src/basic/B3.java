@@ -1,11 +1,13 @@
 package basic;
 
+import a.a2.Dog;
+
 import java.util.HashMap;
 
 public class B3 {
     public static void main(String[] args) {
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("one", 1);
+        HashMap<Object, Integer> hashMap = new HashMap<>();
+        hashMap.put(new Dog("aa", "red", 1), 1);
         hashMap.put("two", 2);
         hashMap.put("three", 3);
         hashMap.put("aa", 3);

@@ -13,8 +13,8 @@ public class Main {
 //            db20.updateMember("aaa", "xxx", "vvv", "nnn", "F", "Y");
 //            db20.searchMember("aaa");
 //            db20.deleteMember("aaa");
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | IOException throwable) {
+            throwable.printStackTrace();
         } finally {
             try {
                 if (db20 != null)

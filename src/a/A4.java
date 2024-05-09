@@ -10,31 +10,41 @@ import java.util.Properties;
 public class A4 {
     public static void main(String[] args) throws IOException {
         Logger logger = LogManager.getLogger();
+        InputStream inputStream = null;
+        FileWriter writer = null;
         if (args.length != 2) {
             System.out.println("請輸入正確參數");
         } else {
-            InputStream inputStream = ClassLoader.getSystemResourceAsStream(args[0] + ".properties");
-            Properties properties = new Properties();
-            if (inputStream != null) {
-                properties.load(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-                logger.info(properties);
+            try {
+                inputStream = ClassLoader.getSystemResourceAsStream(args[0] + ".properties");
+                Properties properties = new Properties();
+                if (inputStream != null) {
+                    properties.load(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+                    logger.info(properties);
 
-                File file = new File(args[1]);
-                FileWriter writer = new FileWriter(file);
+                    File file = new File(args[1] + ".txt");
+                    writer = new FileWriter(file);
 
-                for (String key : properties.stringPropertyNames()) {
-                    writer.write("[" + key + ", " + properties.getProperty(key) + "]\n");
+                    for (String key : properties.stringPropertyNames()) {
+                        writer.write("[" + key + ", " + properties.getProperty(key) + "]\n");
+                    }
                 }
-                writer.close();
-            }
-            System.out.println("請輸入正確參數");
 
-            if (inputStream != null) {
-                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                        writer.close();
+                }
+                if (inputStream != null) {
+                        inputStream.close();
+                }
+
             }
         }
     }
 }
+
 
 
 
